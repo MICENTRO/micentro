@@ -1,44 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Tienda -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Tienda %></h1>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @tienda.nombre %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:nombre) %></dt>
+      <dd><pre class="prettyprint"><%= @tienda.nombre %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ciudad) %></dt>
+      <dd><pre class="prettyprint"><%= @tienda.ciudad %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:direccion) %></dt>
+      <dd><pre class="prettyprint"><%= @tienda.direccion %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:local) %></dt>
+      <dd><pre class="prettyprint"><%= @tienda.local %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:telefono) %></dt>
+      <dd><pre class="prettyprint"><%= @tienda.telefono %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:descripcion) %></dt>
+      <dd><pre class="prettyprint"><%= @tienda.descripcion %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Ciudad:</strong>
-  <%= @tienda.ciudad %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              tiendas_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_tienda_path(@tienda), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              tienda_path(@tienda),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @tienda.user %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @tienda.direccion %>
-</p>
-
-<p>
-  <strong>Local:</strong>
-  <%= @tienda.local %>
-</p>
-
-<p>
-  <strong>Telefono:</strong>
-  <%= @tienda.telefono %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @tienda.descripcion %>
-</p>
-
-<p>
-  <strong>Categoria:</strong>
-  <%= @tienda.categoria %>
-</p>
-
-<%= link_to 'Edit', edit_tienda_path(@tienda) %> |
-<%= link_to 'Back', tiendas_path %>

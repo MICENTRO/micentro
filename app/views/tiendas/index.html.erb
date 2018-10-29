@@ -1,39 +1,46 @@
-<h1>Listing tiendas</h1>
-
-<table>
+<%- model_class = Tienda -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Tienda %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Ciudad</th>
-      <th>User</th>
-      <th>Direccion</th>
-      <th>Local</th>
-      <th>Telefono</th>
-      <th>Descripcion</th>
-      <th>Categoria</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:ciudad) %></th>
+      <th><%= model_class.human_attribute_name(:direccion) %></th>
+      <th><%= model_class.human_attribute_name(:local) %></th>
+      <th><%= model_class.human_attribute_name(:telefono) %></th>
+      <th><%= model_class.human_attribute_name(:descripcion) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @tiendas.each do |tienda| %>
       <tr>
+        <td><%= tienda.id %></td>
         <td><%= tienda.nombre %></td>
         <td><%= tienda.ciudad %></td>
-        <td><%= tienda.user %></td>
         <td><%= tienda.direccion %></td>
         <td><%= tienda.local %></td>
         <td><%= tienda.telefono %></td>
         <td><%= tienda.descripcion %></td>
-        <td><%= tienda.categoria %></td>
-        <td><%= link_to 'Show', tienda %></td>
-        <td><%= link_to 'Edit', edit_tienda_path(tienda) %></td>
-        <td><%= link_to 'Destroy', tienda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l tienda.created_at, format: :long %></td>
+        <td>
+          <%= link_to tienda_path(tienda), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to tienda_path(tienda), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Tienda', new_tienda_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_tienda_path,
+            :class => 'btn btn-primary' %>
