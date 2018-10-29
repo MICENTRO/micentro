@@ -1,0 +1,39 @@
+<h1>Listing tiendas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ciudad</th>
+      <th>User</th>
+      <th>Direccion</th>
+      <th>Local</th>
+      <th>Telefono</th>
+      <th>Descripcion</th>
+      <th>Categoria</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tiendas.each do |tienda| %>
+      <tr>
+        <td><%= tienda.nombre %></td>
+        <td><%= tienda.ciudad %></td>
+        <td><%= tienda.user %></td>
+        <td><%= tienda.direccion %></td>
+        <td><%= tienda.local %></td>
+        <td><%= tienda.telefono %></td>
+        <td><%= tienda.descripcion %></td>
+        <td><%= tienda.categoria %></td>
+        <td><%= link_to 'Show', tienda %></td>
+        <td><%= link_to 'Edit', edit_tienda_path(tienda) %></td>
+        <td><%= link_to 'Destroy', tienda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tienda', new_tienda_path %>

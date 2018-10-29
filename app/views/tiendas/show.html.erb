@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @tienda.nombre %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @tienda.ciudad %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tienda.user %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @tienda.direccion %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @tienda.local %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @tienda.telefono %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @tienda.descripcion %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @tienda.categoria %>
+</p>
+
+<%= link_to 'Edit', edit_tienda_path(@tienda) %> |
+<%= link_to 'Back', tiendas_path %>
